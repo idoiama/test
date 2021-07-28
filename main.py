@@ -22,7 +22,7 @@ Because your past shouldn’t be an obstacle in your future career!
 #--------------------------------- ---------------------------------  ---------------------------------
 #--------------------------------- SETTING UP THE APP
 #--------------------------------- ---------------------------------  ---------------------------------
-title_image = Image.open("logo.jpg")
+#title_image = Image.open("logo.jpg")
 #st.image(title_image)
 st.markdown("A Data Geek's take on the question ***'Do I have the right background to bla bla bla?'***")
 
