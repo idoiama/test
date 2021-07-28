@@ -259,7 +259,7 @@ with col2:
     st.subheader(f"Success ratio over years for {options} Course")
     fig3 = show_text(perc_r, options,select_color(options))
     st.pyplot(fig3)
-    st.header(f"Students wordcloud  for {options} Course")
+    st.header(f"Top Job positions  for {options} Course")
     # Create and generate a word cloud image:
     wordcloud = WordCloud(max_words= 10, 
     background_color="white", 
