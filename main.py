@@ -3,11 +3,8 @@ import string
 import re
 import numpy as np
 import streamlit as st
-
-import streamlit as st
-from matplotlib import pyplot as plt
+import matplotlib.pyplot as plt
 import plotly.express as px
-import plotly.graph_objects as go
 st.set_page_config(page_title="AllWomen database", 
                    page_icon=":computer:",
                    layout='wide')
