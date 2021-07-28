@@ -1,8 +1,17 @@
 import pandas as pd
 import numpy as np
+#from PIL import Image
 import streamlit as st
-import matplotlib.pyplot as plt
+#from plotly.subplots import make_subplots
+#import plotly.subplots as sp
+# Suppress warnings 
+import warnings
+warnings.filterwarnings('ignore')
+import streamlit as st
+from matplotlib import pyplot as plt
 import plotly.express as px
+import plotly.graph_objects as go
+from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
 
 st.set_page_config(page_title="AllWomen database", 
                    page_icon=":computer:",
@@ -79,17 +88,16 @@ def select_color(options):
     elif str(options) ==df.Course_general.unique()[2]:
         return colors[2]
     elif str(options) == df.Course_general.unique()[3]: 
-        return colors[3]
- 
+        return colors[3] 
 def show_text(perc, options, color):
     fig, axes = plt.subplots(1, 1, figsize=(24, 4))
     axes.text(0.5, 0.6,  'Success ratio',ha='center', va='center',
-                fontfamily='monospace', fontsize=40, fontweight='bold',
-                color='#FFCAD3', backgroundcolor='#3E5AFF')
+                fontfamily='monospace', fontsize=50, fontweight='bold',
+                color='#CEEFE8', backgroundcolor='#202020')
     axes.text(0.5, 0.3,+float(perc[perc['Course'] == options]['Percentage_job'].values),
           ha='center', va='center',
-          fontfamily='monospace', fontsize=40, fontweight='bold',
-          color='#FFCAD3', backgroundcolor=color)
+          fontfamily='monospace', fontsize=60, fontweight='bold',
+          color='#CEEFE8', backgroundcolor=color)
     axes.set_axis_off()
     return fig
 
@@ -101,6 +109,8 @@ df = df[(df['Course_general'] != 'Web Development') & (df['Course_general'] != '
 
 # Background
 background = pd.read_csv('courses_bck_percentage.csv')
+background = background[(background['Background'] != 'unknown')]
+
 # Job success:
 perc_r = pd.read_csv('percentage_job.csv', index_col = 0)
 
@@ -143,6 +153,7 @@ with col2:
 
 # Background
 st.header('Background of our students')
+
 all_courses = df.Course_general.unique().tolist()
 st.header('**Select the course/s you want to explore**')
 langs = st.multiselect(' ',options=all_courses, default=all_courses)
@@ -150,13 +161,13 @@ langs = st.multiselect(' ',options=all_courses, default=all_courses)
 ################ SELECT  BY COURSE ###########
 col1, col2 = st.beta_columns(2)
 plot_df = df[df.Course_general.isin(langs)]
+
 #num_students = round(plot_df['Course_general'].value_counts(normalize=True)*100,2).reset_index()
 #num_students.columns = ['Course', 'count']
 based_grouped = plot_df.groupby(['Based in'])['Edition'].count().reset_index()
 based_grouped = based_grouped.sort_values(by= ['Edition'], ascending=False)
 country_grouped = plot_df.groupby(['Native Country'])['Edition'].count().reset_index().sort_values(by=['Edition'], ascending=False)
 perc = perc_r.iloc[:4,:]
-perc
 color_2 = {perc.Course.unique()[0]: colors[2], #Prod
                       perc.Course.unique()[1]: colors[0], #UX
                       perc.Course.unique()[2]: colors[4], #Web
@@ -165,7 +176,8 @@ colors_map = [ '#C89AEF','#FFCAD3','#FFCD2C','#FF642E']
 
 with col1:
     st.subheader('From where our students are based in (top 10 locations, excluding Bcn)')
-    fig1 = px.bar(based_grouped[1:11], x= 'Based in', y= 'Edition',text= 'Edition')
+    fig1 = px.bar(based_grouped[1:11], x= 'Based in', y= 'Edition',
+    text= 'Edition')
     st.plotly_chart(fig1)
     
 with col2:
@@ -184,11 +196,10 @@ with col1:
                  color_discrete_map = color_courses)
     st.plotly_chart(fig)
 with col2:
-
-    st.subheader('Students that have a job linked to the studied Course')
-    fig = px.bar(perc, x='Course', y = 'Percentage_job',
+    st.subheader('Students that found a job linked to the studied Course')
+    fig = px.bar(perc_r[:-1], x='Course', y = 'Percentage_job',
     text='Percentage_job',
-            color = 'Course',color_discrete_map = color_2,
+            color = 'Course',color_discrete_map = color_courses,
             labels = {'Course': 'Course','Percentage_job': '% of students'}
             )
 
@@ -216,8 +227,8 @@ options = st.selectbox(
 #st.write('You selected:', options)
 #st.subheader('Background in function of the course')
 ds = df[df.Course_general == options]
-ds = ds[ds['Background'] != 'unknown']
 
+ds.Background.unique()
 # Background arrangement
 overall_ds = ds['Background'].value_counts(normalize=True).reset_index()
 overall_ds.columns = ['Background', 'percentage']
@@ -225,6 +236,9 @@ overall_ds['Course'] = str(str(options))
 overall_ds['percentage'] = round(overall_ds['percentage']*100,2)
 
 col1, col2 = st.beta_columns(2)
+row2_spacer1, row2_1, row2_spacer2, row2_2, row2_spacer3 = st.beta_columns(
+    (.1, 1.6, .1, 1.6, .1)
+    )
 with col1:
     st.subheader(f"Background for {options} Course")
     fig = px.bar(overall_ds[:15], x= 'Background', y= 'percentage', text='percentage',
@@ -245,7 +259,14 @@ with col2:
     st.subheader(f"Success ratio over years for {options} Course")
     fig3 = show_text(perc_r, options,select_color(options))
     st.pyplot(fig3)
-    st.subheader(f"Students wrdcloud ratio over years for {options} Course")
-
-
-#st.subheader('Success ratio in function of the course_')
+    st.header(f"Students wordcloud  for {options} Course")
+    # Create and generate a word cloud image:
+    wordcloud = WordCloud(max_words= 10, 
+    background_color="white", 
+                   collocations= True, 
+                   max_font_size= 500).generate("".join(ds['Job Position']))
+        
+    # Display the generated image:
+    plt.imshow(wordcloud)
+    st.image(wordcloud.to_array())
+    
