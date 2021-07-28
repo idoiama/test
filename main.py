@@ -1,15 +1,11 @@
 import pandas as pd
-from nltk.stem import WordNetLemmatizer
 import string
 import re
 import numpy as np
-from PIL import Image
 import streamlit as st
 from plotly.subplots import make_subplots
 import plotly.subplots as sp
-# Suppress warnings 
-import warnings
-warnings.filterwarnings('ignore')
+
 import streamlit as st
 from matplotlib import pyplot as plt
 import plotly.express as px
