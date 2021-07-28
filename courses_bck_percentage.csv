@@ -1,0 +1,60 @@
+,Courses,Background,students,total_students,percentage
+0,Data Analytics,arts,2,16,12.5
+1,Data Science ,arts,1,16,6.25
+2,Product Management,arts,5,16,31.25
+3,UX/UI Design,arts,8,16,50.0
+4,Data Analytics,basic science,2,16,12.5
+5,Data Science ,basic science,8,16,50.0
+6,Product Management,basic science,2,16,12.5
+7,UX/UI Design,basic science,4,16,25.0
+8,Data Analytics,business,2,30,6.666666666666667
+9,Data Science ,business,11,30,36.666666666666664
+10,Product Management,business,11,30,36.666666666666664
+11,UX/UI Design,business,6,30,20.0
+12,Data Analytics,design,1,28,3.571428571428571
+13,Data Science ,design,1,28,3.571428571428571
+14,Product Management,design,4,28,14.285714285714285
+15,UX/UI Design,design,22,28,78.57142857142857
+16,Data Analytics,economics,5,16,31.25
+17,Data Science ,economics,4,16,25.0
+18,Product Management,economics,5,16,31.25
+19,UX/UI Design,economics,2,16,12.5
+20,Data Analytics,engineering,1,29,3.4482758620689653
+21,Data Science ,engineering,15,29,51.724137931034484
+22,Product Management,engineering,8,29,27.586206896551722
+23,UX/UI Design,engineering,5,29,17.24137931034483
+24,Data Analytics,journalism,2,9,22.22222222222222
+25,Data Science ,journalism,2,9,22.22222222222222
+26,Product Management,journalism,3,9,33.33333333333333
+27,UX/UI Design,journalism,2,9,22.22222222222222
+28,Data Analytics,linguistics,1,12,8.333333333333332
+29,Data Science ,linguistics,7,12,58.333333333333336
+30,Product Management,linguistics,1,12,8.333333333333332
+31,UX/UI Design,linguistics,3,12,25.0
+32,Data Analytics,mkt&com,2,27,7.4074074074074066
+33,Data Science ,mkt&com,6,27,22.22222222222222
+34,Product Management,mkt&com,10,27,37.03703703703704
+35,UX/UI Design,mkt&com,9,27,33.33333333333333
+36,Data Analytics,psychology,1,8,12.5
+37,Data Science ,psychology,4,8,50.0
+38,UX/UI Design,psychology,3,8,37.5
+39,Data Analytics,sociology,2,5,40.0
+40,Data Science ,sociology,1,5,20.0
+41,Product Management,sociology,1,5,20.0
+42,UX/UI Design,sociology,1,5,20.0
+43,Data Analytics,tourism,3,12,25.0
+44,Data Science ,tourism,2,12,16.666666666666664
+45,Product Management,tourism,5,12,41.66666666666667
+46,UX/UI Design,tourism,2,12,16.666666666666664
+47,Data Science ,architecture,4,12,33.33333333333333
+48,UX/UI Design,architecture,8,12,66.66666666666666
+49,Data Science ,humanities,4,9,44.44444444444444
+50,Product Management,humanities,4,9,44.44444444444444
+51,UX/UI Design,humanities,1,9,11.11111111111111
+52,Data Science ,law,1,3,33.33333333333333
+53,Product Management,law,1,3,33.33333333333333
+54,UX/UI Design,law,1,3,33.33333333333333
+55,Data Science ,unknown,1,3,33.33333333333333
+56,Product Management,unknown,1,3,33.33333333333333
+57,UX/UI Design,unknown,1,3,33.33333333333333
+58,UX/UI Design,education,1,1,100.0
