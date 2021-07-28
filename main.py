@@ -3,8 +3,6 @@ import string
 import re
 import numpy as np
 import streamlit as st
-from plotly.subplots import make_subplots
-import plotly.subplots as sp
 
 import streamlit as st
 from matplotlib import pyplot as plt
