@@ -1,10 +1,9 @@
 import pandas as pd
-import string
-import re
 import numpy as np
 import streamlit as st
 import matplotlib.pyplot as plt
 import plotly.express as px
+
 st.set_page_config(page_title="AllWomen database", 
                    page_icon=":computer:",
                    layout='wide')
