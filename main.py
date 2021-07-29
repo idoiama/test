@@ -178,6 +178,7 @@ with col2:
     fig3 = show_text(perc_r, options,select_color(options,df))
     st.pyplot(fig3)
     st.subheader(f"Top words according to their job positions")
+    st.markdown("The higher the size, the more frequent the word is ***")
     # Create and generate a word cloud image:
     wordcloud = WordCloud(max_words= 50, 
     background_color="white", 
