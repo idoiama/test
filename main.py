@@ -50,9 +50,19 @@ perc_r = pd.read_csv('percentage_job.csv', index_col = 0)
 #---------------------------------------------------------------#
 # OVERALL OVERVIEW THROUGH COURSES AND SETUP DATA
 #---------------------------------------------------------------#
-editions = df.groupby('Course_general')['Edition'].nunique().reset_index()
-editions = editions.sort_values(by = ['Edition'], ascending = False)
+#editions = df.groupby('Course_general')['Edition'].nunique().reset_index()
+#editions = editions.sort_values(by = ['Edition'], ascending = False)
+    
+# List of colors in function of each of the courses
 colors = ['#3E5AFF', '#FFCAD3', '#FF642E', '#FFCD2C', '#C89AEF',' #202020']
+color_courses = {df.Course_general.unique()[0]: colors[0], #Product
+                      df.Course_general.unique()[1]: colors[1], #UX
+                      df.Course_general.unique()[2]: colors[2], #DS
+                      df.Course_general.unique()[3]: colors[3]} #DA}
+
+num_students = round(df['Course_general'].value_counts(normalize=True)*100,2).reset_index()
+num_students.columns = ['Course', 'count']
+
 col1, col2 = st.beta_columns(2)
 with col1:
     columns1 = ['Student_ID', 'Native Country', 'Based in', 'Edition' ]
@@ -65,22 +75,11 @@ with col1:
     st.pyplot(ff2)  
     ff3 = plot_card_Spain(df)
     st.pyplot(ff3)
-    
-df = df[(df['Course_general'] != 'Web Development') & (df['Course_general'] != 'Content Design & UX Writing')]
-# List of colors in function of each of the courses
-
-color_courses = {df.Course_general.unique()[0]: colors[0], #Product
-                      df.Course_general.unique()[1]: colors[1], #UX
-                      df.Course_general.unique()[2]: colors[2], #DS
-                      df.Course_general.unique()[3]: colors[3]} #DA}
-                      
-num_students2 = round(df['Course_general'].value_counts(normalize=True)*100,2).reset_index()
-num_students2.columns = ['Course', 'count']
 
 with col2:
     st.subheader('Distribution of our students in all courses')
     # Creamos el primer gráfico (fig1)
-    fig = px.bar(num_students2, x='Course', y = 'count',text='count',
+    fig = px.bar(num_students, x='Course', y = 'count',text='count',
                 color = 'Course',color_discrete_map=color_courses)
     fig.update_traces(texttemplate='%{text:.2s} %', textposition='inside')
     st.plotly_chart(fig)
@@ -92,8 +91,7 @@ all_courses = df.Course_general.unique().tolist()
 st.subheader('**Select the course/s you want to explore**')
 langs = st.multiselect(' ',options=all_courses, default=all_courses)
 
-################ SELECT  BY COURSE ###########
-col1, col2 = st.beta_columns(2)
+################ FILTER BY COURSE ###########
 plot_df = df[df.Course_general.isin(langs)]
 
 based_grouped = plot_df.groupby(['Based in'])['Edition'].count().reset_index()
@@ -101,6 +99,7 @@ based_grouped = based_grouped.sort_values(by= ['Edition'], ascending=False)
 country_grouped = plot_df.groupby(['Native Country'])['Edition'].count().reset_index().sort_values(by=['Edition'], ascending=False)
 perc = perc_r.iloc[:5,:]
 
+#Re-arrangement of the colors per course (percentage)
 color_perc = {perc.Course.unique()[0]: colors[2], #DS-FT
                       perc.Course.unique()[1]: colors[0], #Prod
                       perc.Course.unique()[2]: '#f59371', #DS-PT
@@ -108,6 +107,7 @@ color_perc = {perc.Course.unique()[0]: colors[2], #DS-FT
                       perc.Course.unique()[4]: colors[3]} #DA
 colors_map = [ '#C89AEF','#FFCAD3','#FFCD2C','#FF642E'] 
 
+col1, col2 = st.beta_columns(2)
 with col1:
     st.subheader('From where our students are located in  (excluding Bcn)')
     fig1 = px.bar(based_grouped[1:11], x= 'Based in', y= 'Edition',
@@ -120,10 +120,10 @@ with col2:
                         color="Edition",color_continuous_scale= colors_map)                 
     st.plotly_chart(fig2)
 
+    
 col1, col2 = st.beta_columns(2)
 with col1:
     st.subheader('Academic background distribution per courses')
-
     fig = px.bar(background, x="Background", y='percentage', color= 'Courses',
                 labels = {'Background':'Academic background',
                  'percentage': '% of students'},
@@ -167,9 +167,7 @@ overall = overall[(overall['Background'] != 'unknown') & (overall['Background'] 
 
 
 col1, col2 = st.beta_columns(2)
-row2_spacer1, row2_1, row2_spacer2, row2_2, row2_spacer3 = st.beta_columns(
-    (.1, 1.6, .1, 1.6, .1)
-    )
+
 with col1:
     st.subheader(f"[{options}] - Their backgrounds")
     fig = px.bar(overall[:15], x= 'Background', y= 'percentage', text='percentage',
@@ -181,7 +179,6 @@ with col1:
 # JOBS SUCCESS OF THE COURSES
 #---------------------------------------------------------------#  
 with col2:
-    #st.subheader(f"Success ratio")
     fig3 = show_text(perc_r, options,select_color(options,df))
     st.pyplot(fig3)
     st.subheader(f"Top words according to their job positions")
