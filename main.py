@@ -22,10 +22,9 @@ We believe that any background is the right background to become a woman in tech
 Because your past shouldn’t be an obstacle in your future career!
 """
 
-
-#--------------------------------- ---------------------------------  ---------------------------------
+#-------------------------------------------------------------------------------------------------------
 #--------------------------------- SETTING UP THE APP
-#--------------------------------- ---------------------------------  ---------------------------------
+#--------------------------------- ---------------------------------------------------------------------
 #title_image = Image.open("logo.jpg")
 #st.image(title_image)
 st.markdown("A Data Geek's take on the question ***'Do I have the right background to bla bla bla?'***")
@@ -76,7 +75,6 @@ with col1:
 
 with col2:
     st.subheader('Distribution of our students in all courses')
-    # Creamos el primer gráfico (fig1)
     fig = px.bar(num_students, x='Course', y = 'count',text='count',
                 color = 'Course',color_discrete_map=color_courses)
     fig.update_traces(texttemplate='%{text:.2s} %', textposition='inside')
@@ -117,11 +115,11 @@ with col2:
     fig2 =  px.choropleth(country_grouped[1:], locations="Native Country",locationmode = 'country names',
                         color="Edition",color_continuous_scale= colors_map)                 
     st.plotly_chart(fig2)
-
     
 col1, col2 = st.beta_columns(2)
 with col1:
     st.subheader('Academic background distribution per courses')
+    st.markdown('The total number of female students in each background was considered and represented their percentage for each year.)
     fig = px.bar(background, x="Background", y='percentage', color= 'Courses',
                 labels = {'Background':'Academic background',
                  'percentage': '% of students'},
@@ -188,4 +186,4 @@ with col2:
         
     #plt.imshow(wordcloud)
     st.image(wordcloud.to_array())
-   
+  
