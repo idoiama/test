@@ -46,7 +46,7 @@ def plot_card_Spain(df):
         axes[ind].set_axis_off()
     return fig  
 
-def select_color(df,options):
+def select_color(options,df):
     colors = ['#3E5AFF', '#FFCAD3', '#FF642E', '#FFCD2C', '#C89AEF',' #202020']
     colors_ = []
     if options == df.Course_general.unique()[0]:  
