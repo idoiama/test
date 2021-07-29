@@ -5,8 +5,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
 
-def plot_card_total_number(df, columns, colors):  
-    
+def plot_card_total_number(df, columns, colors):      
     col = list(columns) 
     fig, axes = plt.subplots(1, 4, figsize=(24, 4))
     axes = axes.flatten()
@@ -47,6 +46,7 @@ def plot_card_Spain(df):
     return fig  
 
 def select_color(options):
+    colors = ['#3E5AFF', '#FFCAD3', '#FF642E', '#FFCD2C', '#C89AEF',' #202020']
     colors_ = []
     if options == df.Course_general.unique()[0]:  
         return colors[0]
