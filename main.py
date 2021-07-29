@@ -255,18 +255,24 @@ with col1:
 #---------------------------------------------------------------#
 # JOBS OF THE COURSES
 #---------------------------------------------------------------#  
+import random
+def grey_color_func(word, font_size, position, orientation, random_state=None,
+                    **kwargs):
+    return "hsl(350, 100%%, %d%%)" % random.randint(60, 100)
+    
 with col2:
     st.subheader(f"Success ratio over years for {options} Course")
     fig3 = show_text(perc_r, options,select_color(options))
     st.pyplot(fig3)
-    st.header(f"Top Job positions  for {options} Course")
+    st.header(f"Job positions wordcloud  for {options} Course")
     # Create and generate a word cloud image:
-    wordcloud = WordCloud(max_words= 10, 
+    wordcloud = WordCloud(max_words= 50, 
     background_color="white", 
-                   collocations= True, 
-                   max_font_size= 500).generate("".join(ds['Job Position']))
+                   collocations= False,color_func=lambda *args, **kwargs: select_color(options), 
+                   max_font_size= 500).generate(" ".join(ds['clean_job']))
         
-    # Display the generated image:
-    plt.imshow(wordcloud)
+    #plt.imshow(wordcloud)
     st.image(wordcloud.to_array())
+    
+#st.set_option('deprecation.showPyplotGlobalUse', False)
     
