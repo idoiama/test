@@ -197,7 +197,7 @@ with col2:
     # Create and generate a word cloud image:
     wordcloud = WordCloud(max_words= 50, 
     background_color="white", 
-                   collocations= False,color_func=lambda *args, **kwargs: select_color(options), 
+                   collocations= False,color_func=lambda *args, **kwargs: select_color(options,df), 
                    max_font_size= 500).generate(" ".join(course['clean_job']))
         
     #plt.imshow(wordcloud)
