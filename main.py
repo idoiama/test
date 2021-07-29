@@ -182,7 +182,7 @@ row2_spacer1, row2_1, row2_spacer2, row2_2, row2_spacer3 = st.beta_columns(
 with col1:
     st.subheader(f"[{options}] - Their backgrounds")
     fig = px.bar(overall[:15], x= 'Background', y= 'percentage', text='percentage',
-                     color_discrete_sequence=[select_color(options,overall)])
+                     color_discrete_sequence=[select_color(options,df)])
     fig.update_traces(texttemplate='%{text:.3s} %', textposition='outside')
     st.plotly_chart(fig)
 
