@@ -191,7 +191,7 @@ with col1:
 #---------------------------------------------------------------#  
 with col2:
     #st.subheader(f"Success ratio")
-    fig3 = show_text(perc_r, options,select_color(options,perc_r))
+    fig3 = show_text(perc_r, options,select_color(options,df))
     st.pyplot(fig3)
     st.subheader(f"Top words for their job positions")
     # Create and generate a word cloud image:
