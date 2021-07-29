@@ -23,6 +23,7 @@ def plot_card_total_number(df, columns, colors):
     return fig
 
 def plot_card_Spain(df): 
+    colors = ['#3E5AFF', '#FFCAD3', '#FF642E', '#FFCD2C', '#C89AEF',' #202020']
     spanish = df[df['Native Country'] == 'Spain']['Native Country']  
     bcn =df[df['Based in'] == 'Barcelona'] ['Based in']
     df = pd.concat([spanish, bcn], axis=1)
