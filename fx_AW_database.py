@@ -1,16 +1,5 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
 import pandas as pd
 import numpy as np
-import streamlit as st
-# Suppress warnings 
-import warnings
-warnings.filterwarnings('ignore')
-import streamlit as st
 from matplotlib import pyplot as plt
 import plotly.express as px
 import plotly.graph_objects as go
@@ -33,6 +22,7 @@ def plot_card_total_number(df, columns, colors):
                 color=colors[2], backgroundcolor='white')
         axes[ind].set_axis_off()
     return fig
+
 def plot_card_Spain(df): 
     spanish = df[df['Native Country'] == 'Spain']['Native Country']  
     bcn =df[df['Based in'] == 'Barcelona'] ['Based in']
@@ -54,7 +44,8 @@ def plot_card_Spain(df):
                 fontfamily='monospace', fontsize=48, fontweight='bold',
                 color='#FFCD2C', backgroundcolor='white')
         axes[ind].set_axis_off()
-    return fig       
+    return fig  
+
 def select_color(options):
     colors_ = []
     if options == df.Course_general.unique()[0]:  
@@ -65,6 +56,7 @@ def select_color(options):
         return colors[2]
     elif str(options) == df.Course_general.unique()[3]: 
         return colors[3] 
+    
 def show_text(perc, options, color):
     fig, axes = plt.subplots(1, 1, figsize=(24, 4))
     axes.text(0.3, 0.6,  'Success ratio',ha='center', va='center',
@@ -76,4 +68,3 @@ def show_text(perc, options, color):
           color='#CEEFE8', backgroundcolor=color)
     axes.set_axis_off()
     return fig
-
