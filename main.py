@@ -12,7 +12,7 @@ from matplotlib import pyplot as plt
 import plotly.express as px
 import plotly.graph_objects as go
 from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
-from fx_AW_database import (
+from functions_ import (
     plot_card_total_number,
     plot_card_Spain,
     select_color,
