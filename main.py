@@ -119,7 +119,7 @@ with col2:
 col1, col2 = st.beta_columns(2)
 with col1:
     st.subheader('Academic background distribution per courses')
-    st.markdown('The total number of female students in each background was considered and represented their percentage for each year.)
+    st.markdown('The total number of female students in each background was considered and represented their percentage for each year.')
     fig = px.bar(background, x="Background", y='percentage', color= 'Courses',
                 labels = {'Background':'Academic background',
                  'percentage': '% of students'},
