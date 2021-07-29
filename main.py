@@ -182,7 +182,7 @@ row2_spacer1, row2_1, row2_spacer2, row2_2, row2_spacer3 = st.beta_columns(
 with col1:
     st.subheader(f"[{options}] - Their backgrounds")
     fig = px.bar(overall[:15], x= 'Background', y= 'percentage', text='percentage',
-                     color_discrete_sequence=[select_color(options)])
+                     color_discrete_sequence=[select_color(options,overall)])
     fig.update_traces(texttemplate='%{text:.3s} %', textposition='outside')
     st.plotly_chart(fig)
 
@@ -191,7 +191,7 @@ with col1:
 #---------------------------------------------------------------#  
 with col2:
     #st.subheader(f"Success ratio")
-    fig3 = show_text(perc_r, options,select_color(options))
+    fig3 = show_text(perc_r, options,select_color(options,perc_r))
     st.pyplot(fig3)
     st.subheader(f"Top words for their job positions")
     # Create and generate a word cloud image:
