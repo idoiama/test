@@ -109,7 +109,7 @@ color_perc = {perc.Course.unique()[0]: colors[2], #DS-FT
 colors_map = [ '#C89AEF','#FFCAD3','#FFCD2C','#FF642E'] 
 
 with col1:
-    st.subheader('From where our students are located in  (top 10 locations, excluding Bcn)')
+    st.subheader('From where our students are located in  (excluding Bcn)')
     fig1 = px.bar(based_grouped[1:11], x= 'Based in', y= 'Edition',
     text= 'Edition')
     st.plotly_chart(fig1)
@@ -122,7 +122,7 @@ with col2:
 
 col1, col2 = st.beta_columns(2)
 with col1:
-    st.subheader('Top academic background of our students')
+    st.subheader('Academic background distribution per courses')
 
     fig = px.bar(background, x="Background", y='percentage', color= 'Courses',
                 labels = {'Background':'Academic background',
