@@ -1,12 +1,7 @@
 import pandas as pd
 import numpy as np
-#from PIL import Image
 import streamlit as st
-#from plotly.subplots import make_subplots
-#import plotly.subplots as sp
-# Suppress warnings 
-import warnings
-warnings.filterwarnings('ignore')
+
 import streamlit as st
 from matplotlib import pyplot as plt
 import plotly.express as px
@@ -193,7 +188,7 @@ with col2:
     #st.subheader(f"Success ratio")
     fig3 = show_text(perc_r, options,select_color(options,df))
     st.pyplot(fig3)
-    st.subheader(f"Top words for their job positions")
+    st.subheader(f"Top words according to their job positions")
     # Create and generate a word cloud image:
     wordcloud = WordCloud(max_words= 50, 
     background_color="white", 
