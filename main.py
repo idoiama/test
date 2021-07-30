@@ -127,6 +127,8 @@ with col1:
     st.plotly_chart(fig)
 with col2:
     st.subheader('Ratio of the students that found a job linked to the Course')
+    st.markdown('Here you will find the ratio of students that did a tech career shift!')
+
     fig = px.bar(perc_r[:-1], x='Course', y = 'Percentage_job',
     text='Percentage_job',
             color = 'Course',color_discrete_map = color_perc,
