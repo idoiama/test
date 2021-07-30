@@ -119,15 +119,15 @@ with col2:
 col1, col2 = st.beta_columns(2)
 with col1:
     st.subheader('Academic background distribution per courses')
-    st.markdown('The total number of female students in each background was considered and represented their percentage per course.')
+    st.markdown('Percentage of students for each course according to their academic background.')
     fig = px.bar(background, x="Background", y='percentage', color= 'Courses',
                 labels = {'Background':'Academic background',
                  'percentage': '% of students'},
                  color_discrete_map = color_courses)
     st.plotly_chart(fig)
 with col2:
-    st.subheader('Ratio of the students that found a job linked to the Course')
-    st.markdown('Here you will find the ratio of students that did a tech career shift!                                   ')
+    st.subheader('Students that found a job linked to the Course')
+    st.markdown('Ratio of students that did a tech career shift for each of the courses.')
 
     fig = px.bar(perc_r[:-1], x='Course', y = 'Percentage_job',
     text='Percentage_job',
