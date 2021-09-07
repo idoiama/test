@@ -17,7 +17,6 @@ st.title("Welcome to the ***AllWomen*** database!  :computer: :star:")
 """
 [Allwomen] (https://www.allwomen.tech/)
 Bla bla bla information from our students bla bla bla
-Bla bla bla information from our students bla bla bla
 We believe that any background is the right background to become a woman in tech. That’s why we design our programs for you to go from 0 to 100, and we offer mentoring and assistance from beginning to end. 
 Because your past shouldn’t be an obstacle in your future career!
 """
@@ -27,7 +26,7 @@ Because your past shouldn’t be an obstacle in your future career!
 #--------------------------------- ---------------------------------------------------------------------
 #title_image = Image.open("logo.jpg")
 #st.image(title_image)
-st.markdown("A Data Geek's take on the question ***'Do I have the right background to bla bla bla?'***")
+st.markdown("A Data Geek's take on the question ***'Do I have the right background to study a tech course?'***")
 
 st.header("**Overall information from our students**")
 """
