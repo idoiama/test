@@ -10,14 +10,13 @@ from functions_ import *
 
 
 ## PAGE STYLING
-st.set_page_config(page_title="AllWomen database", 
+st.set_page_config(page_title="allWomen database", 
                    page_icon=":computer:",
                    layout='wide')
                    
-st.title("Welcome to the ***AllWomen*** database!  :computer: :star:")
+st.title("Welcome to the ***allWomen*** database!  :computer: :star:")
 """
 [Allwomen] (https://www.allwomen.tech/)
-Bla bla bla information from our students bla bla bla
 We believe that any background is the right background to become a woman in tech. That’s why we design our programs for you to go from 0 to 100, and we offer mentoring and assistance from beginning to end. 
 Because your past shouldn’t be an obstacle in your future career!
 """
@@ -30,8 +29,6 @@ Because your past shouldn’t be an obstacle in your future career!
 st.markdown("A Data Geek's take on the question ***'Do I have the right background to study a tech course?'***")
 
 st.header("**Overall information from our students**")
-"""
-Bla bla bla information from our students bla bla bla"""
 
 #Data loading and first checks
 df = pd.read_csv('all_students_StreamlitCLEAN2.csv', index_col = 0)
