@@ -16,8 +16,7 @@ st.set_page_config(page_title="allWomen database",
                    
 st.title("Welcome to the ***allWomen*** database!  :computer: :star:")
 """
-[Allwomen] (https://www.allwomen.tech/)
-We believe that any background is the right background to become a woman in tech. That’s why we design our programs for you to go from 0 to 100, and we offer mentoring and assistance from beginning to end. 
+At [allwomen] (https://www.allwomen.tech/) we believe that any background is the right background to become a woman in tech. That’s why we design our programs for you to go from 0 to 100, and we offer mentoring and assistance from beginning to end. 
 Because your past shouldn’t be an obstacle in your future career!
 """
 
